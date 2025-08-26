@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Topics{% endblock %}
+
+{% block content %}
+    <h1>Topics</h1>
+    <div class="list-group">
+        {% for topic in topics %}
+            <a href="{% url 'core:topic_detail' topic.slug %}" class="list-group-item list-group-item-action">
+                {{ topic.title }}
+            </a>
+        {% empty %}
+            <p>No topics yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ topic.title }}{% endblock %}
+
+{% block meta_description %}Learn about {{ topic.title }} and find tutorials on various subjects.{% endblock %}
+
+{% block content %}
+    <h1>{{ topic.title }}</h1>
+    <div class="list-group">
+        {% for article in articles %}
+            <a href="{% url 'core:article_detail' topic.slug article.slug %}" class="list-group-item list-group-item-action">
+                {{ article.title }}
+            </a>
+        {% empty %}
+            <p>No articles in this topic yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
